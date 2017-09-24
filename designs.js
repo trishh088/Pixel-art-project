@@ -1,4 +1,3 @@
-
 'use strict';
 
 const colorPicker = document.getElementById('colorPicker');
@@ -11,9 +10,7 @@ var grid = '';
 
 
 //When size is submitted by the user, call makeGrid()
-function makeGrid(event) {
-  rows = document.getElementById('input_height').value;
-  columns = document.getElementById('input_width').value;
+function makeGrid(row, columns) {
 
   for (var i = 0; i < rows; i++) {
     grid += `<tr>`;
@@ -22,10 +19,10 @@ function makeGrid(event) {
     }
     grid += `</tr>`;
   }
-  console.log(grid);
+  //console.log(grid);
   table.innerHTML = grid;
   addListeners();
-  event.preventDefault();
+  //event.preventDefault();
 
 }
 
@@ -46,7 +43,13 @@ function addListeners() {
   }
 }
 
-form.addEventListener("submit", makeGrid, false);
+form.addEventListener("submit", function(event) {
+	event.preventDefault();
+	  rows = document.getElementById('input_height').value;
+	  columns = document.getElementById('input_width').value;
+	  makeGrid(rows, columns);
+}
+, false);
 
 colorPicker.addEventListener("change", updateColorPicker, false);
 
@@ -62,16 +65,26 @@ colorPicker.addEventListener("change", updateColorPicker, false);
             addRow();
           });
 
-          // adding a single row
-                function addColumn(){
-                  $('td').append("</td>&nbsp;<tr><td>&nbsp;</td>");
-                }
-                console.log(addColumn);
 
+
+                $('#refresh').on('click',function(){
+var refresh= parseInt(rows,columns);
+           grid = '';
+          makeGrid(refresh);
+        });
+
+        function addColumn(){
+          // $('td').append("</td>&nbsp;<tr><td>&nbsp;</td>");
+        }
+        console.log(addColumn);
 
                 $('#add_column').on('click',function(){
-                  var newcolumns = 1;
-                  makeGrid(rows,newcolumns);
-                      //
-                      // addColumn();
+                  // rows = $('#input_width').val()
+
+
+                   var newcolumns =  '';
+
+                  makeGrid(newcolumns,columns);
+                   addColumn();
+
                     });
