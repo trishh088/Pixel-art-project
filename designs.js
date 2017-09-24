@@ -1,90 +1,90 @@
-'use strict';
+$(function(){
+  var rows,columns,colour;
+  color=$('#colorPicker').val();
 
-const colorPicker = document.getElementById('colorPicker');
-const form = document.getElementById("sizePicker");
-const table = document.getElementById('pixel_canvas');
-let rows;
-let columns;
-let color;
-var grid = '';
+  $('#submit').on('click',function(event){
+    event.preventDefault();
+    makeGrid(rows,columns);
+  });
 
-
-//When size is submitted by the user, call makeGrid()
-function makeGrid(row, columns) {
-
-  for (var i = 0; i < rows; i++) {
-    grid += `<tr>`;
-    for (var j = 0; j < columns; j++) {
-      grid += `<td>&nbsp;</td>`;
-    }
-    grid += `</tr>`;
-  }
-  //console.log(grid);
-  table.innerHTML = grid;
-  addListeners();
-  //event.preventDefault();
-
-}
-
-function updateColorPicker(event) {
-  color = document.getElementById("colorPicker").value;
-
-}
-
-function updateBoxColor(event) {
-  var box = document.getElementById(this.id);
-  box.style.backgroundColor = color;
-}
-
-function addListeners() {
-  var boxes = document.getElementsByTagName("td");
-  for (var i = 0; i < boxes.length; i++) {
-    boxes[i].addEventListener("click", updateBoxColor, false);
-  }
-}
-
-form.addEventListener("submit", function(event) {
-	event.preventDefault();
-	  rows = document.getElementById('input_height').value;
-	  columns = document.getElementById('input_width').value;
-	  makeGrid(rows, columns);
-}
-, false);
-
-colorPicker.addEventListener("change", updateColorPicker, false);
-
-
-
-// adding a single column
-      function addRow(){
-        $('tr').append('<td>');
-
+  function makeGrid(){
+      $('#pixel_canvas').children().remove();
+      rows=$('#input_width').val();
+      columns=$('#input_height').val();
+      var i=0;
+      while(i<columns){
+          $('#pixel_canvas').append('<tr></tr>');
+          for(var j=0;j<rows;j++){
+              $('tr').last().append('<td></td>');
+            }
+            i++;
+        }
       }
 
-      $('#add_row').on('click',function(){
-            addRow();
+      // for colouring the page
+      $('#colorPicker').on('change',function(){
+        color=$(this).val();
+      });
+
+          $('#pixel_canvas').on('mouseenter','td',function(){
+            $(this).toggleClass('active');
+          }).on('mouseleave','td',function(){
+            $(this).toggleClass('active');
           });
+          $('#pixel_canvas').on('click','td',function(){
+            $(this).css('background',color);
+            });
+// to add a single column
+            $('#add_column').on('click',function(){
+                      $('#pixel_canvas').append('<tr></tr>');
+                      var newcolumn=$('#pixel_canvas').children().last();
+                      for(var i=0;i<rows;i++){
+                          newcolumn.append('<td></td>');
+                      }
+                      columns++;
+                    });
 
+                    //to remove a single column
+                    $("#remove_column").on('click',function(){
+                        $('#pixel_canvas').children().last().remove();
+                        columns--;
+                    });
 
+                    // to add a single new row
+                    $('#add_row').on('click',function(){
+                      $('tr').append('<td></td>');
+                      rows++;
+                    });
 
-                $('#refresh').on('click',function(){
-var refresh= parseInt(rows,columns);
-           grid = '';
-          makeGrid(refresh);
-        });
+                    // to remove a single row
+                    $('#remove_row').on('click',function(){
+                      var i=0;
+                      var removeRow=$('#pixel_canvas').children().first();
+                      while(i<columns){
+                        removeRow.children().last().remove();
+                        removeRow=removeRow.next();
+                        i++;
+                      }
+                      rows--;
+                    });
 
-        function addColumn(){
-          // $('td').append("</td>&nbsp;<tr><td>&nbsp;</td>");
-        }
-        console.log(addColumn);
-
-                $('#add_column').on('click',function(){
-                  // rows = $('#input_width').val()
-
-
-                   var newcolumns =  '';
-
-                  makeGrid(newcolumns,columns);
-                   addColumn();
+                    //Start Afresh
+                    $('#refresh').on('click',function(){
+                        $('#pixel_canvas').empty();
 
                     });
+
+                    $('#brush').on('click', function(){
+                      color=$(this).val();
+                      $('#pixel_canvas').on('mouseenter','td',function(){
+                        $(this).toggleClass('active');
+                      }).on('mouseleave','td',function(){
+                        $(this).toggleClass('active');
+                      });
+                      $('.colouring').mouseover(function(){
+                        $(this).css('background',color);
+                      })
+                    })
+
+
+    });
