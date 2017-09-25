@@ -76,7 +76,7 @@ $(function(){
                     $('#brush').on('click', function(){
 
         $('td').hover(function () {
-       $(this).css("background-color", color);
+       $('#pixel_canvas').css("background-color", color);
 
          console.log('1');
     });
