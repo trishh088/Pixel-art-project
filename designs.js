@@ -76,10 +76,12 @@ $(function(){
                     $('#brush').on('click', function(){
 
         $('td').hover(function () {
-       $('#pixel_canvas').css("background-color", color);
+       $(this).css("background-color", color);
 
          console.log('1');
     });
+
+
                       // document.getElementById("pixel_canvas").addEventListener("mouseover", paint());
                       // console.log("it works");
                      })
