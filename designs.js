@@ -1,5 +1,5 @@
 $(function(){
-  var rows,columns,colour;
+  var rows,columns,color;
   color=$('#colorPicker').val();
 
   $('#submit').on('click',function(event){
@@ -71,20 +71,24 @@ $(function(){
                     //Start Afresh
                     $('#refresh').on('click',function(){
                         $('#pixel_canvas').empty();
-
                     });
 
                     $('#brush').on('click', function(){
-                      color=$(this).val();
-                      $('#pixel_canvas').on('mouseenter','td',function(){
-                        $(this).toggleClass('active');
-                      }).on('mouseleave','td',function(){
-                        $(this).toggleClass('active');
-                      });
-                      $('.colouring').mouseover(function(){
-                        $(this).css('background',color);
-                      })
-                    })
 
+        $('td').hover(function () {
+       $(this).css("background-color", color);
 
+         console.log('1');
+    });
+                      // document.getElementById("pixel_canvas").addEventListener("mouseover", paint());
+                      // console.log("it works");
+                     })
+    //                 var paint = function () {
+    //                   // $( this ).find( "#pixel_canvas" ).css('background',color);
+    //                   // $('#pixel_canvas').css('background',color);
+    //                   $('td').hover(function () {
+    //     $('#pixel_canvas').css("background-color", color);
+    // });
+    //
+    //                 }
     });
