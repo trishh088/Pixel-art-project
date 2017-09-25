@@ -6,22 +6,18 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="designs.js"></script>
-
 </head>
-
-</body>
 <body>
     <h1 class="design">Lab: Pixel Art Maker</h1>
 
     <h2>Choose Grid Size</h2>
     <form id="sizePicker">
         Grid Height:
-        <input type="number" id="input_height" name="height" min="1" value="1">
-        Grid Width:
+        <input type="number" id="input_height" name="height" min="1" value="1"> Grid Width:
         <input type="number" id="input_width" name="width" min="1" value="1">
         <input id="submit" type="submit">
     </form>
-  </br>
+    </br>
     <button id="add_row">Add Row</button>
     <button id="add_column">Add Column</button>
     <br>
@@ -30,12 +26,10 @@
     <button id="refresh">Nah!Lets Start Afresh!</button>
     <br>
 
-
-
     <h2>Pick A Color</h2>
     <input type="color" id="colorPicker">
-      <button id="brush"  id="1" value="OFF"> Brush </button>
-      <button id="background">Make this color my Background</button>
+    <button class="brush" id="1" value="OFF"> Brush </button>
+    <br> <button id="background">Make this color my Background</button>
 
     <h2>Design Canvas</h2>
     <table class="coloring" id="pixel_canvas"></table>
