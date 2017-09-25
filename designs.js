@@ -1,5 +1,5 @@
 $(function(){
-  var rows,columns,color;
+  var rows,columns,color,flag;
   color=$('#colorPicker').val();
 
   $('#submit').on('click',function(event){
@@ -73,24 +73,43 @@ $(function(){
                         $('#pixel_canvas').empty();
                     });
 
-                    $('#brush').on('click', function(){
-
-        $('td').hover(function () {
-       $(this).css("background-color", color);
-
-         console.log('1');
-    });
-
-
-                      // document.getElementById("pixel_canvas").addEventListener("mouseover", paint());
-                      // console.log("it works");
-                     })
-    //                 var paint = function () {
-    //                   // $( this ).find( "#pixel_canvas" ).css('background',color);
-    //                   // $('#pixel_canvas').css('background',color);
-    //                   $('td').hover(function () {
-    //     $('#pixel_canvas').css("background-color", color);
+    //                 $('#brush').on('click', function(){
+    //                     $('td').hover(function () {
+    //    $(this).css("background-color", color);
     // });
-    //
-    //                 }
-    });
+
+
+                    //  })
+
+                     $('#brush').on('click', function(){
+                       flag =1;
+                             if ( flag == 1 ) {
+                             $('td').hover(function () {
+                                 $(this).css("background-color", color);
+                             flag = 2;
+                             console.log('1a');
+                         });
+                             }
+
+                             else {
+                             //$(this).css("background-color", 'red');
+                             $('#pixel_canvas').on('click','td',function(){
+                               $(this).css('background-color',color);
+                               });
+                             flag = 1;
+                             console.log('1');
+                         }
+                           });
+
+
+
+
+
+
+
+                     // to paint the whole canvas with a color
+                     $('#background').on('click', function(){                      
+                     $('#pixel_canvas').css("background-color", color);
+                     });
+
+  });
