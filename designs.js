@@ -81,34 +81,70 @@ $(function(){
 
                     //  })
 
-                     $('#brush').on('click', function(){
-                       flag =1;
-                             if ( flag == 1 ) {
-                             $('td').hover(function () {
-                                 $(this).css("background-color", color);
-                             flag = 2;
-                             console.log('1a');
-                         });
-                             }
+                    //  $('#brush').on('click', function(){
+                    //    flag =1;
+                    //          if ( flag == 1 ) {
+                    //          $('td').hover(function () {
+                    //              $(this).css("background-color", color);
+                    //          flag = 2;
+                    //          console.log('1a');
+                    //      });
+                    //          }
+                     //
+                    //          else {
+                    //          //$(this).css("background-color", 'red');
+                    //          $('#pixel_canvas').on('click','td',function(){
+                    //            $(this).css('background-color',color);
+                    //            });
+                    //          flag = 1;
+                    //          console.log('1');
+                    //      }
+                    //        });
+                          //  .off(hover) method
+                  //
+                  //
+                  //                   $('#brush').on('click', function(){
+                  //                       $('td').hover(function () {
+                  //      $(this).css("background-color", color);
+                  //   });
+                  // });
+                  //
+                  //                   $('#brush').off('click', function(){
+                  //                     $('#pixel_canvas').on('click','td',function(){
+                  //                       $(this).css('background',color);
+                  //                       brush.target.innerHTML = '🔊'
+                  //                       });
+                  //   });
+                  function onhover() {
+     $('td').on('mouseover', function () {
+       $(this).css("background-color", color);
+     });
+ }
 
-                             else {
-                             //$(this).css("background-color", 'red');
-                             $('#pixel_canvas').on('click','td',function(){
-                               $(this).css('background-color',color);
-                               });
-                             flag = 1;
-                             console.log('1');
-                         }
-                           });
+ function offHover() {
+       $('td').off('mouseover');
+ }
+
+ $('#brush').on('click', toggle);
 
 
+ function toggle() {
+   if($("#1").val()=="OFF") {
+     $("#1").val("ON");
+     onhover();
+   }
 
+   else if($("#1").val()=="ON") {
+     $("#1").val("OFF");
+     offHover();
+   }
+ }
 
 
 
 
                      // to paint the whole canvas with a color
-                     $('#background').on('click', function(){                      
+                     $('#background').on('click', function(){
                      $('#pixel_canvas').css("background-color", color);
                      });
 
