@@ -1,16 +1,22 @@
-# Pixel Art Maker Project
+🎨 Pixel Art Maker Project 🎨
+ ===============================
 
-## Table of Contents
+For the Live Version click- https://trishh088.github.io/Pixel-art-project/
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+## Instructions to use the app
+* Select the number of rows and columns in the input boxes and click submit to see the grid on canvas.
 
-## Instructions
+* Click the **'Add Vertical line'**,**'Add Horizontal line'**,**'Remove Vertical Line'**,**'Remove Horizontal line'** to manipulate the size of the grid.
 
-To get started, open `designs.js` and start building out the app's functionality.
+* Click **'Nah!Lets Start Afresh!'** to refersh the canvas completely.
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+* Use **'Brush'** to switch On/Off the paint mode to make colouring easier.
 
-## Contributing
+* Click **'Make this color my Background'** to make the color selected in **'Pick A color'** as a background color for the whole grid.
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+## Instructions to download the project
+
+* To download he project go on https://github.com/trishh088/Pixel-art-project
+* Click **'Clone or Download'** to download the file as a zip or on Desktop.
+* Open **index.html** to run the file locally.
+* **design.js** contains the Jquery code, **style.css** contains the CSS code used to style the application.

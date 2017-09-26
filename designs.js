@@ -105,6 +105,14 @@ $(function () {
         .on('click', function () {
             $('#pixel_canvas')
                 .empty();
+                //sets the input parameters to default
+                $("#input_height")
+                    .val("1");
+                    $("#input_width")
+                        .val("1");
+                        //sets the background colour to default
+                        color = $("#pixel_canvas")
+                            .css('background', "white");
         });
 
     // for painting the canvas with on and off paint function
